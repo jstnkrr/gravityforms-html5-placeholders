@@ -1,0 +1,9 @@
+{
+    "name": "jstnkrr/gravityforms-html5-placeholders",
+    "description": "Adds HTML 5 placeholders to Gravity Forms. Just activate and edit custom placeholder text directly in the form builder.",
+    "keywords": ["placeholders", "gravitforms"],
+    "require": {
+        "php": ">=5.3.0"
+    },
+	"type":"wordpress-plugin"
+}
