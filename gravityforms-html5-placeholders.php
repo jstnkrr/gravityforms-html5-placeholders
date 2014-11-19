@@ -16,6 +16,9 @@ Add placeholder text in the field editor.
 /* Add a custom field to the field editor (See editor screenshot) */
 add_action("gform_field_standard_settings", "gfhp_standard_settings", 10, 2);
 
+wp_register_script('gf-placeholders', plugins_url('js/gf.placeholders.js', __FILE__), array('jquery'), '', true);
+
+
 function gfhp_standard_settings($position, $form_id){
 
 	// Create settings on position 25 (right after Field Label)
@@ -57,18 +60,19 @@ add_action('gform_register_init_scripts',"gfhp_gform_register_init_scripts", 10,
 
 function gfhp_gform_register_init_scripts($form, $is_ajax=false){
 
+	wp_enqueue_script('gf-placeholders');
+
 	$plugin_url = plugins_url( basename(dirname(__FILE__)) );
 
-	$placholders = array();
+	$placeholders = array();
 	foreach($form['fields'] as $i=>$field) {
 		if (isset($field['placeholder']) && !empty($field['placeholder'])) {
-			$placholders["#input_{$form['id']}_{$field['id']}"] = $field['placeholder'];
+			$placeholders["#input_{$form['id']}_{$field['id']}"] = $field['placeholder'];
 		}
 	}
 	echo "<script>";
-	echo "var jquery_placeholder_url = '" . $plugin_url . "/js/vendor/jquery.placeholder-1.0.1.js';";
-	echo "var gf_placeholders = " . json_encode($placholders) . ";";
+	echo "window.gfPlaceholders = window.gfPlaceholders || { placeholders: [], polyfill: '" . $plugin_url . "/js/vendor.jquery.placeholder-1.0.1.js'};";
+	echo "window.gfPlaceholders.placeholders.push(".json_encode($placeholders).");";
 	echo "</script>";
-	echo "<script src='{$plugin_url}/js/gf.placeholders.js'></script>";
 
 }
