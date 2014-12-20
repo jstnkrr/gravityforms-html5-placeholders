@@ -21,11 +21,11 @@
 	});
 
 	var support = (!('placeholder' in document.createElement('input'))); // borrowed from Modernizr.com
-	if ( support && jquery_placeholder_url ) {
+	if ( support && window.gfPlaceholders.polyfill ) {
 		$.ajax({
 			cache: true,
 			dataType: 'script',
-			url: jquery_placeholder_url,
+			url: window.gfPlaceholders.polyfill,
 			success: function() {
 				$('input[placeholder], textarea[placeholder]').placeholder({
 					blankSubmit: true
