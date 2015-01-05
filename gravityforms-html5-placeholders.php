@@ -2,7 +2,7 @@
 /*
 Plugin Name: Gravity Forms HTML5 Placeholders
 Description: Adds HTML5 placeholder support to Gravity Forms' fields with a javascript fallback. Javascript & jQuery are required.
-Version: 0.1
+Version: 2015.01.05
 Plugin URI: https://github.com/jstnkrr/gravityforms-html5-placeholders
 Author: Justin Kerr <justin@undefined.ca>
 Author URI: http://www.undefined.ca
