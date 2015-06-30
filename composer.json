@@ -5,5 +5,6 @@
     "require": {
         "php": ">=5.3.0"
     },
-	"type":"wordpress-plugin"
+	"type":"wordpress-plugin",
+	"version":"2015.06.30"
 }
